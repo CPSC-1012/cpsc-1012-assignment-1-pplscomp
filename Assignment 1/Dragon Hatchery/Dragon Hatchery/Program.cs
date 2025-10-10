@@ -11,13 +11,12 @@ using System.Text;
 
 //Declare Variables
 int initialDragons;
-int rate;
+double rate;
 double totalRate;
 int weeks;
 double totalTime;
-double dragonRateTime;
-double totalDragons;
-double roundedDragons;
+float dragonRateTime;
+float totalDragons;
 
 //Display Title
 Console.WriteLine("/t/t***********************************");
@@ -28,23 +27,24 @@ Console.WriteLine("/t/t***********************************");
 //Prompt for Initial Amount of Dragons (intialDragons)
 Console.Write("How Many Dragons at the beginning of the Hatchery Period?: ");
 initialDragons = int.Parse(Console.ReadLine());
-//Prompt for Rate of Dragon's increase Rate. totalRate = (100 + Rate)/100
-Console.Write("How fast do the Dragons increase in population per day? (enter as a whole number): ");
+//Prompt for Rate of Dragon's increase Rate. totalRate = (1+(Rate/100)
+Console.Write("How fast do the Dragons increase in population per day as a percentage? Example, 20% is 20: ");
 rate = int.Parse(Console.ReadLine());
-totalRate = (100 + rate) / 100;
+rate = rate/100;
+totalRate = (1+rate);
 //Prompt for Time of production (in weeks). totalTime = 7*weeks
 Console.Write("How Many weeks in the Hatchery Period? (enter as a whole number): ");
 weeks = int.Parse(Console.ReadLine());
 totalTime = 7*weeks;
 //Calculate how many dragons at end of provided time. totalDragons = initialDragons + (totalRate)^totalTime
 //Calculate dragonRateTime = (totalRate)^totalTime
-dragonRateTime = Math.Pow(totalRate, totalTime);
-//Calculate totalDragons = initialDragon+dragonRateTime
+dragonRateTime = (float)Math.Pow(totalRate, totalTime);
+//Calculate totalDragons = initialDragon+(dragonRateTime
 totalDragons = initialDragons*dragonRateTime;
 //Get totalDragons rounded.
-roundedDragons = Math.Round(0.5,MidpointRounding.AwayFromZero));
 //Diplay amount of Dragons rounded to whole number. 
-Console.WriteLine($"At the end of {weeks} weeks ({totalTime} days), you would have a total of {totalDragons} (Approximated to be {roundedDragons}).");
+Console.WriteLine($"At the end of {weeks} weeks ({totalTime} days), you would have a total of {totalDragons: #.00}, (Approximated to be {(int)totalDragons} Dragons.");
 //End
+Console.WriteLine();
 Console.WriteLine("Press Any Key to Exit the Simulation");
 Console.ReadKey();
