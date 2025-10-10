@@ -10,14 +10,14 @@ using System.Text;
 /// </summary>
 
 //Declare Variables
-int intialDragons;
+int initialDragons;
 int rate;
-decimal totalRate;
+double totalRate;
 int weeks;
-float totalTime;
-float dragonRateTime;
-float totalDragons;
-int roundedDragons;
+double totalTime;
+double dragonRateTime;
+double totalDragons;
+double roundedDragons;
 
 //Display Title
 Console.WriteLine("/t/t***********************************");
@@ -31,18 +31,18 @@ initialDragons = int.Parse(Console.ReadLine());
 //Prompt for Rate of Dragon's increase Rate. totalRate = (100 + Rate)/100
 Console.Write("How fast do the Dragons increase in population per day? (enter as a whole number): ");
 rate = int.Parse(Console.ReadLine());
-totalRate = (100 + rate) / 100
+totalRate = (100 + rate) / 100;
 //Prompt for Time of production (in weeks). totalTime = 7*weeks
 Console.Write("How Many weeks in the Hatchery Period? (enter as a whole number): ");
 weeks = int.Parse(Console.ReadLine());
-totalTime = 7 * weeks
+totalTime = 7*weeks;
 //Calculate how many dragons at end of provided time. totalDragons = initialDragons + (totalRate)^totalTime
 //Calculate dragonRateTime = (totalRate)^totalTime
-dragonRateTime = Math.pow(totalRate, totalTime);
+dragonRateTime = Math.Pow(totalRate, totalTime);
 //Calculate totalDragons = initialDragon+dragonRateTime
-totalDragons = initialDragon + dragonRateTime;
+totalDragons = initialDragons*dragonRateTime;
 //Get totalDragons rounded.
-roundedDragons = Round.(totalDragons);
+roundedDragons = Math.Round(0.5,MidpointRounding.AwayFromZero));
 //Diplay amount of Dragons rounded to whole number. 
 Console.WriteLine($"At the end of {weeks} weeks ({totalTime} days), you would have a total of {totalDragons} (Approximated to be {roundedDragons}).");
 //End
