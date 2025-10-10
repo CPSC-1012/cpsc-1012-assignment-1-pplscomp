@@ -6,22 +6,41 @@
 /// </summary>
 
 //Declare Variables
+int intialDragons;
+int rate;
+decimal totalRate;
+int weeks;
+float totalTime;
+float dragonRateTime;
+float totalDragons;
+int roundedDragons;
 
 //Display Title
+Console.WriteLine("/t/t***********************************");
+Console.WriteLine("/t/t*****Dragon Hatchery Simulator*****");
+Console.WriteLine("/t/t***********************************");
 
 //Prompt for inputs
-// Prompt for Initial Amount of Dragons (intialDragons)
-
-//Prompt for Rate of Dragon's increase Rate. totalRate = (1+Rate provided)
-
+//Prompt for Initial Amount of Dragons (intialDragons)
+Console.Write("How Many Dragons at the beginning of the Hatchery Period?: ")
+initialDragons = int.Parse(Console.ReadLine());
+//Prompt for Rate of Dragon's increase Rate. totalRate = (100 + Rate)/100
+Console.Write("How fast do the Dragons increase in population per day? (enter as a whole number): ")
+rate = int.Parse(Console.ReadLine());
+totalRate = (100+rate)/100
 //Prompt for Time of production (in weeks). totalTime = 7*weeks
-
+Console.Write("How Many weeks in the Hatchery Period? (enter as a whole number): ")
+weeks = int.Parse(Console.ReadLine());
+totalTime = 7*weeks
 //Calculate how many dragons at end of provided time. totalDragons = initialDragons + (totalRate)^totalTime
-
 //Calculate dragonRateTime = (totalRate)^totalTime
-
+dragonRateTime = Math.pow(totalRate, totalTime)
 //Calculate totalDragons = initialDragon+dragonRateTime
-
-//Diplay amount of Dragons rounded to whole number.
-
+totalDragons = initialDragon + dragonRateTime
+//Get totalDragons rounded.
+roundedDragons = Round.(totalDragons)
+//Diplay amount of Dragons rounded to whole number. 
+Console.WriteLine($"At the end of {weeks} weeks ({totalTime} days), you would have a total of {totalDragons} (Approximated to be {roundedDragons})."
 //End
+Console.WriteLine("Press Any Key to Exit the Simulation") 
+Console.ReadKey()
