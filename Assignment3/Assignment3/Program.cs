@@ -1,7 +1,3 @@
-﻿namespace Assignment3
-{
-    internal class Program
-    {
         ///<summary>
         ///Program to run as a monthly time tracker, to be able to load, save, and display data entered.
         ///Created By: Chris Malone
@@ -29,12 +25,11 @@
             string[,,] dates = new string[YearMaxLength, MonthMaxLength, DayMaxLength];
 
             // TODO:
-
             // create a double array named minutes, using the max size constant you created above to specify the physical size of the array
             double[] minutes = new double[MinuteMaxLength];
             // TODO:
             // create a variable to represent the logical size of the array
-            int minutesLogicalSize = minutes.Length - 1;
+            int countOfEntries = 0
 
 
 
@@ -235,31 +230,58 @@
                 Console.WriteLine("[R]eturn to MAIN MENU");
             }
 
-            // TODO: create the Prompt method
-            /// <summary>
-            /// Allows to Prompt the user with the customized strings.
-            /// </summary>
-            /// <param name = "text"> text to be prompted to the user</param>
+    // TODO: create the Prompt method
+    /// <summary>
+    /// Allows to Prompt the user with the customized strings.
+    /// </summary>
+    /// <param name = "text"> text to be prompted to the user</param>
 
 
-            static void Prompt(string text)
+    static string Prompt(string promptString)
+    {
+        Console.Write(promptString);
+        return Console.ReadLine();
+    }
+}
+
+    // TODO: create the PromptDouble() method
+
+    /// <summary>
+    /// Allows to Prompt the user for a value classified as a double.
+    /// </summary>
+    /// <param name = "value"> value to be interpreted as a double</param>
+    static double PromptDouble(string promptString)
+    {
+        bool aDouble = false;
+        Console.WriteLine(promptString);
+        string userString = Console.ReadLine();
+        int testValue = int.Parse(userString);
+
+        while (aDouble == false)
+        {
+            try
             {
-                string text;
-                Console.WriteLine("${text}");
+                double userInput = int.Parse(userString);
+                if (userInput == testValue)
+                {
+                    double userOutput = userInput;
+                    aDouble = true;
+                }
+                else
+                {
+                    Console.WriteLine("Write a number in the form of a double");
+                    aDouble = false;
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Write a number in the form of a double");
+                aDouble = false;
             }
 
-            // TODO: create the PromptDouble() method
-
-            /// <summary>
-            /// Allows to Prompt the user for a value classified as a double.
-            /// </summary>
-            /// <param name = "value"> value to be interpreted as a double</param>
-            static void PromptDouble(double value)
-            {
-                double value;
-                Console.Write("Enter a Value");
-                double.Parse(Console.ReadLine());
-            }
+        }
+        return testValue;
+    }
 
             // optional TODO: create the PromptInt() method
 
@@ -273,36 +295,115 @@
                 Console.Write("Enter a Value");
                 int.Parse(Console.ReadLine());
 
-                // TODO: create the CalculateLargest() method
+    // TODO: create the CalculateLargest() method
+    ///<summary>
+    /// returns the value of the highest value in the values array
+    /// </summary>
+    /// <param name = "values">values listed (minutes)</param>
+    /// <param name = "countOfEntries"> indicates what entry is being calculated/viewed</param>
+    static int CalculateLargest(double[] values, int countOfEntries)
+{
+    double highestValue = values[0];
+    int highestValuesIndex = 0;
+        double largest;
+            
+    while (countOfEntries < values.Length)
+    {
 
-                // TODO: create the CalculateSmallest() method
+        if (values[countOfEntries] > highestValue)
+        {
+            highestValuesIndex = countOfEntries - 1;
+                    countOfEntries++;
+            largest = values[highestValuesIndex]
 
-                // TODO: create the CalculateMean() method
+                }
+                else
+        {
+            countOfEntries++;
+        }
+    }
+    return largest;
+}
 
-                // ++++++++++++++++++++++++++++++++++++ Difficulty 2 ++++++++++++++++++++++++++++++++++++
+    // TODO: create the CalculateSmallest() method
+    ///<summary>
+    ///returns the value of the lowest value in the values array 
+    ///</summary>
+    /// <param name = "values">values listed (minutes)</param>
+    /// <param name = "countOfEntries"> indicates what entry is being calculated/viewed</param>
 
-                // TODO: create the EnterDailyValues method
+    static int CalculateSmallest(double[] values, int countOfEntries)
+{
+    double lowestValue = values[0];
+    int lowestValueIndex = 0;
+        double smallest;
 
-                // TODO: create the LoadFromFile method
+    while (countOfEntries < values.Length)
+    {
 
-                // TODO: create the SaveToFile method
+        if (values[countOfEntries] < lowestValue)
+        {
+            lowestValueIndex = countOfEntries - 1;
+            countOfEntries++;
+            smallest = values[lowestValueIndex];
+        }
+        else
+        {
+            countOfEntries++;
+        }
+    }
+    return smallest;
+}
 
-                // TODO: create the DisplayEntries method
 
-                // ++++++++++++++++++++++++++++++++++++ Difficulty 3 ++++++++++++++++++++++++++++++++++++
+    // TODO: create the CalculateMean() method
+    ///<summary>
+    ///returns the mean average of the daily values;
+    ///</summary>
+    /// <param name = "values">values listed (minutes)</param>
+    /// <param name = "countOfEntries"> indicates what entry is being calculated/viewed</param>
+    static double CalculateMean(double[] values, int countOfEntries)
+{
+    double totalValues = 0;
+    double mean = 0
 
-                // TODO: create the EditEntries method
 
-                // ++++++++++++++++++++++++++++++++++++ Difficulty 4 ++++++++++++++++++++++++++++++++++++
+    while (countOfEntries < values.Length)
+    {
+        totalValues += Values[countOfEntries];
+        countOfEntries++;
+    }
+    double mean = totalValues / countOfEntries;
 
-                // TODO: create the DisplayChart method
+    return mean;
+   
 
-                // ********************************* Helper methods *********************************
+   
 
-                /// <summary>
-                /// Displays the Program intro.
-                /// </summary>
-                static void DisplayProgramIntro()
+    // ++++++++++++++++++++++++++++++++++++ Difficulty 2 ++++++++++++++++++++++++++++++++++++
+
+    // TODO: create the EnterDailyValues method
+
+    // TODO: create the LoadFromFile method
+
+    // TODO: create the SaveToFile method
+
+    // TODO: create the DisplayEntries method
+
+    // ++++++++++++++++++++++++++++++++++++ Difficulty 3 ++++++++++++++++++++++++++++++++++++
+
+    // TODO: create the EditEntries method
+
+    // ++++++++++++++++++++++++++++++++++++ Difficulty 4 ++++++++++++++++++++++++++++++++++++
+
+    // TODO: create the DisplayChart method
+
+    // ********************************* Helper methods *********************************
+
+    /// <summary>
+    /// Displays the Program intro.
+    /// </summary>
+    static void DisplayProgramIntro()
         {
             Console.WriteLine("****************************************\n" +
                 "*                                      *\n" +
